@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div *ngFor="let item of cart?.items">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img [src]="item.productImage || emptyImageUrl" [alt]="item.productName" class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <h4>{{ item.productName }}</h4>
+                        <span>{{ item.productName }}</span>
+                        <br>
+                        <span>Quantity: {{ item.quantity }}</span>
+                        <br>
+                        <span>Price: RM {{ item.unitPrice }}</span>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!--<div *ngIf="cart && cart.items && cart.items.length" class="payment-section">-->
+            <div class="payment-section">
+                <h4>{{ 'payment details' | uppercase }}</h4>
+                <payment-form [total]="cartTotal"></payment-form>
+            </div>
+        </div>
+    </div>
+</div>

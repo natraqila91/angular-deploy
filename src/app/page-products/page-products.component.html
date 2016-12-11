@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="col-md-12" *ngIf="queryStr">
+        Filter products by:
+        <u>{{ queryStr }}</u>
+        <small><a href="javascript:void(0)" (click)="clearFilter()" class="clear-filter">x</a></small>
+        <hr>
+    </div>
+    <!--empty state-->
+    <div class="col-md-12" *ngIf="productList && !productList.length">
+        No result found.
+    </div>
+    <!--ideal state-->
+    <div class="col-lg-3 col-md-6" *ngFor="let prod of productList">
+        <product-card [item]="prod" (addToCart)="addItemToCart($event)"></product-card>
+    </div>
+    <!--add new product-->
+    <div class="col-lg-2 col-md-5">
+            <a routerLink="add">
+                <img src="assets/products/empty-add.png" alt="new product" class="img-fluid">
+            </a>
+    </div>
+</div>

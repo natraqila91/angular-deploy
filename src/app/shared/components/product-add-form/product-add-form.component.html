@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-6">
+        <form (ngSubmit)="saveProduct(form.value, form.valid)" #form="ngForm" novalidate>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" ngModel class="form-control" required 
+                    #name="ngModel" minlength="5">
+                <small *ngIf="!name.valid && (name.dirty || form.dirty || form.submitted)" class="form-text text-danger">
+                    Name is required and minimum 5 characters.
+                </small>
+            </div>
+            <div class="form-group">
+                <label>Image URL</label>
+                <input type="text" name="image" ngModel class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Selling price</label>
+                <input type="number" name="sellingPrice" ngModel class="form-control">
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <label>Image Preview</label>
+        <div>
+            <img [src]="form.value.image || emptyImageUrl" alt="preview" width="200px">
+        </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-12">
+        Total in Cart: <strong>RM {{ total }}</strong>
+        <hr>
+        <form [formGroup]="myForm" (ngSubmit)="checkout(myForm.value, myForm.valid)" novalidate>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" formControlName="email" class="form-control">
+                <small [hidden]="myForm.controls.email.valid || (myForm.controls.email.pristine && !submitted)" 
+                    class="form-text text-danger">
+                    Email is required
+                </small>
+            </div>
+            <div class="form-group" formGroupName="creditCard">
+                <label>Credit Card No.</label>
+                <input type="text" formControlName="no" class="form-control">
+                <small [hidden]="myForm.controls.creditCard.controls.no.valid || (myForm.controls.creditCard.controls.no.pristine && !submitted)" 
+                    class="form-text text-danger">
+                    Credit Card No is required and Visa ONLY
+                </small>
+            </div>
+            <div class="form-group" formGroupName="creditCard">
+                <label>Expiry</label>
+                <input type="text" formControlName="expiry" class="form-control">
+                <small [hidden]="myForm.controls.creditCard.controls.expiry.valid || (myForm.controls.creditCard.controls.expiry.pristine && !submitted)" 
+                    class="form-text text-danger">
+                    Expiry is required
+                </small>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
